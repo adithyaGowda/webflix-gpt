@@ -15,6 +15,8 @@
 - Created redux store with userSlice
 - Signout API
 - Update Profile
+- BugFix - Signup user with updated displayName
+- BugFix - Auth route guard to redirect to login page if user not authenticated and vice-versa
 
 # Features
 

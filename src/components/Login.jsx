@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
@@ -17,7 +16,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const [errors, setErrors] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInForm = () => {
@@ -49,7 +47,6 @@ const Login = () => {
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName }));
-              navigate("/browse");
             })
             .catch((err) => {
               const errCode = err.code;
@@ -74,7 +71,6 @@ const Login = () => {
           //signed in
           const user = userCred.user;
           console.log(user);
-          navigate("/browse");
         })
         .catch((err) => {
           const errCode = err.code;
