@@ -8,6 +8,13 @@
 - SignUp form render on condition
 - Form Validation
 - Use of useRef hook
+- Firebase Setup
+- Deploying app to production
+- Create Signup user account
+- Signin user API
+- Created redux store with userSlice
+- Signout API
+- Update Profile
 
 # Features
 
