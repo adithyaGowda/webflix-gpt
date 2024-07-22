@@ -17,6 +17,14 @@
 - Update Profile
 - BugFix - Signup user with updated displayName
 - BugFix - Auth route guard to redirect to login page if user not authenticated and vice-versa
+- Unsubscribed the onAuthStateChanges callback
+- Added URLs to common file
+- Using TMDS APIs to fetch list of movies/ Get access tokens
+- Created movieSlice to handle movie data in the local redux store
+- Added reducers to store movies as well as trailer
+- Embedded the youtube video and make it autoplay
+- Created custom hook to fetch and update the store
+- Built movie suggestion list view
 
 # Features
 
