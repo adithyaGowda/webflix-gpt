@@ -10,6 +10,9 @@ export const LOGIN_BG =
 export const TMDB_URL = "https://api.themoviedb.org/3/movie/";
 
 export const TMDB_NOW_PLAYING = TMDB_URL + "now_playing?language=en-US&page=1";
+export const TMDB_POPULAR = TMDB_URL + "popular?language=en-US&page=1";
+export const TMDB_TOP_RATED = TMDB_URL + "top_rated?language=en-US&page=1";
+export const TMDB_UPCOMING = TMDB_URL + "upcoming?language=en-US&page=1";
 
 export const API_OPTIONS = {
   method: "GET",
