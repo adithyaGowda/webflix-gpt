@@ -25,6 +25,10 @@
 - Embedded the youtube video and make it autoplay
 - Created custom hook to fetch and update the store
 - Built movie suggestion list view
+- Added multiple api calls to fetch multiple movie section
+- GPT search page
+- GPT search bar
+- Multi-language feature
 
 # Features
 

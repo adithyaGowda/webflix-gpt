@@ -7,9 +7,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { LOGIN_BG } from "../utils/constants";
+import { lang } from "../utils/language";
 
 const Login = () => {
   const [isSignupForm, setIsSignupForm] = useState(false);
@@ -18,6 +19,8 @@ const Login = () => {
   const password = useRef(null);
   const [errors, setErrors] = useState(null);
   const dispatch = useDispatch();
+
+  const selectLanguage = useSelector((store) => store.config.selectLanguage);
 
   const toggleSignInForm = () => {
     setIsSignupForm((prev) => !prev);
@@ -39,7 +42,6 @@ const Login = () => {
         .then((userCred) => {
           //signed up
           const user = userCred.user;
-          console.log(user);
 
           //update user info
           updateProfile(auth.currentUser, {
@@ -71,7 +73,6 @@ const Login = () => {
         .then((userCred) => {
           //signed in
           const user = userCred.user;
-          console.log(user);
         })
         .catch((err) => {
           const errCode = err.code;
@@ -93,26 +94,28 @@ const Login = () => {
         className=" mx-auto right-0 left-0 absolute w-4/12 bg-black text-white p-14 my-36 rounded-md bg-opacity-80"
       >
         <h1 className="text-3xl font-bold py-4">
-          {isSignupForm ? "Sign Up" : "Sign In"}
+          {isSignupForm
+            ? lang[selectLanguage].userAuth.signUp
+            : lang[selectLanguage].userAuth.signIn}
         </h1>
         {isSignupForm && (
           <input
             ref={name}
             type="text"
-            placeholder="Full Name"
+            placeholder={lang[selectLanguage].userAuth.fullname}
             className="w-full p-4 my-4 rounded-md border bg-gray-900 bg-opacity-35"
           />
         )}
         <input
           ref={email}
           type="text"
-          placeholder="Email address"
+          placeholder={lang[selectLanguage].userAuth.email}
           className="w-full p-4 my-4 rounded-md border bg-gray-900 bg-opacity-35"
         />
         <input
           ref={password}
           type="password"
-          placeholder="Password"
+          placeholder={lang[selectLanguage].userAuth.password}
           className="w-full p-4 my-4 rounded-md border bg-gray-900 bg-opacity-35"
         />
         <p className="text-[#E50914] text-sm py-2">{errors}</p>
@@ -120,16 +123,22 @@ const Login = () => {
           className="p-4 my-6 w-full bg-[#E50914] rounded-md"
           onClick={handleFormSubmit}
         >
-          {isSignupForm ? "Sign Up" : "Sign In"}
+          {isSignupForm
+            ? lang[selectLanguage].userAuth.signUp
+            : lang[selectLanguage].userAuth.signIn}
         </button>
         <div>
           <p>
-            {isSignupForm ? "Already a member? " : "New to Webflix? "}
+            {isSignupForm
+              ? lang[selectLanguage].userAuth.alreadyMember
+              : lang[selectLanguage].userAuth.newtoWebflix}
             <span
               className="hover:underline cursor-pointer"
               onClick={toggleSignInForm}
             >
-              {isSignupForm ? "Sign in now" : "Sign up now"}
+              {isSignupForm
+                ? lang[selectLanguage].userAuth.signInNow
+                : lang[selectLanguage].userAuth.signUpNow}
             </span>
             .
           </p>

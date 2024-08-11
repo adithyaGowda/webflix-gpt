@@ -16,12 +16,16 @@ import {
 import useFetchMoviesToStore from "../hooks/useFetchMoviesToStore";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import GPTView from "./GPTView";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
   const selectNowPlayingMovies = (store) => store.movies.nowPlayingMovies;
   const selectPopularMovies = (store) => store.movies.popularMovies;
   const selectTopRatedMovies = (store) => store.movies.topRatedMovies;
   const selectUpcomingMovies = (store) => store.movies.upcomingMovies;
+
+  const toggleGptView = useSelector((store) => store.gpt.toggleGptView);
 
   useFetchMoviesToStore(
     TMDB_NOW_PLAYING,
@@ -54,8 +58,14 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
+      {toggleGptView ? (
+        <GPTView />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };
